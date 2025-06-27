@@ -1,21 +1,30 @@
 const express = require('express');
 const { GoogleGenerativeAI } = require('@google/generative-ai');
 const cors = require('cors');
-require('dotenv').config(); // تأكد من تثبيت dotenv
+const path = require('path'); 
+require('dotenv').config();
 
 const app = express();
-const port = 3000; // يمكنك تغيير المنفذ إذا لزم الأمر
+const port = 3000;
 
-// استخدم cors لتسمح للواجهة الأمامية بالتواصل مع الواجهة الخلفية
+
 app.use(cors()); 
 app.use(express.json());
 
-// قم بتحميل مفتاح API من ملف .env
+app.use(express.static(path.join(__dirname, '')));
+
+
+app.get('/', (req, res) => {
+
+    res.sendFile(path.join(__dirname, 'final.html')); 
+});
+
+
 const apiKey = process.env.GEMINI_API_KEY; 
 
 if (!apiKey) {
     console.error('GEMINI_API_KEY is not set in the .env file.');
-    process.exit(1);
+
 }
 
 const genAI = new GoogleGenerativeAI(apiKey);
@@ -24,7 +33,6 @@ app.post('/ask-ai', async (req, res) => {
     try {
         const userInput = req.body.prompt;
         
-        // استخدم Gemini Model
         const model = genAI.getGenerativeModel({ model: 'gemini-1.5-flash-latest' });
         
         const result = await model.generateContent(userInput);
