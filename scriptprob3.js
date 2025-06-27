@@ -182,7 +182,7 @@ async function askAI() {
 
     // 3. Send the request to the backend
     try {
-        const response = await fetch('http://localhost:3000/ask-ai', {
+        const response = await fetch('/ask-ai', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
