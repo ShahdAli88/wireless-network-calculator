@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>OFDM Calculator</title>
+    <link rel="stylesheet" href="style2.css" />
+</head>
+<body>
+<div class="container">
+    <h2>OFDM Systems</h2>
+    <p>In 4G LTE systems, each resource block has a bandwidth of ---------- kHz. The subcarrier spacing is ------------ kHz, and there are --------- OFDM symbols per resource block. Assuming each resource block has a duration of ------------ milliseconds and bits are modulated using ------------QAM</p>
+
+    <div class="inputs">
+        <div class="input-group">
+            <label for="bw">Bandwidth:</label>
+            <input type="number" id="bw" />
+            <select id="bw-unit">
+                <option value="nHz">nHz</option>
+                <option value="μHz">μHz</option>
+                <option value="mHz">mHz</option>
+                <option value="Hz">Hz</option>
+                <option value="KHz" selected>KHz</option>
+                <option value="MHz">MHz</option>
+                <option value="GHz">GHz</option>
+                <option value="THz">THz</option>
+            </select>
+        </div>
+
+        <div class="input-group">
+            <label for="subcarrierSpacing">Subcarrier Spacing:</label>
+            <input type="number" id="subcarrierSpacing" />
+            <select id="subcarrierSpacing-unit">
+                <option value="nHz">nHz</option>
+                <option value="μHz">μHz</option>
+                <option value="mHz">mHz</option>
+                <option value="Hz">Hz</option>
+                <option value="KHz" selected>KHz</option>
+                <option value="MHz">MHz</option>
+                <option value="GHz">GHz</option>
+                <option value="THz">THz</option>
+            </select>
+        </div>
+
+        <div class="input-group">
+            <label for="ofdmDuration">OFDM Symbols:</label>
+            <input type="number" id="ofdmDuration" step="any" />
+        </div>
+
+        <div class="input-group">
+            <label for="qamLevel">QAM Level:</label>
+            <input type="number" id="qamLevel" />
+        </div>
+
+        <div class="input-group">
+            <label for="numParallelBlocks">Number of Parallel Blocks:</label>
+            <input type="number" id="numParallelBlocks" />
+        </div>
+
+        <div class="input-group">
+            <label for="eduration">Transmission Duration:</label>
+            <input type="number" id="eduration" step="any" />
+            <select id="eduration-unit">
+                <option value="ns">ns</option>
+                <option value="μs">μs</option>
+                <option value="ms" selected>ms</option>
+                <option value="s">s</option>
+                <option value="min">min</option>
+                <option value="hr">hr</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="button-group">
+        <button id="calculate-button">Calculate</button>
+        <button id="ask-ai-button">Explain with AI</button>
+    </div>
+    
+
+    <div class="results">
+        <h2>Results:</h2>
+        <div class="result-box">
+            <p>Number of subcarriers: <span id="output1">__</span></p>
+            <p>Bits per resource element: <span id="output2">__</span></p>
+            <p>Bits per OFDM symbol: <span id="output3">__</span></p>
+            <p>Bits per OFDM resource block: <span id="output4">__</span></p>
+            <p>Maximum transmission rate: <span id="output5">__</span></p>
+            <p>Spectral Efficiency: <span id="output6">__</span></p>
+        </div>
+    </div>
+
+    <div id="rs-warning" class="warning"></div>
+
+    <div id="aiExplanationSection" class="hidden">
+        <h2>AI Explanation</h2>
+        <div id="aiExplanation" class="explanation-box">
+            <p>Explanation will appear here...</p>
+        </div>
+    </div>
+
+</div>
+<script src="main2.js"></script>
+</body>
+</html>

@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Interactive Wireless Network Calculator</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 20px;
+      background-image: url('W.WEBP'); 
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+      color: #fff;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .container {
+      width: 90%;
+      max-width: 900px;
+    }
+
+    .header {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .header h1 {
+      color: #fff;
+      font-size: 2.2em;
+    }
+
+    .topics {
+      margin-top: 10px;
+      background-color: rgba(0, 0, 0, 0.4);
+      padding: 15px;
+      border-radius: 10px;
+    }
+
+    .topics p {
+      margin-bottom: 10px;
+      color: #fff;
+      line-height: 1.5;
+    }
+
+    .buttons {
+      margin-top: 20px;
+      text-align: center;
+    }
+
+    .buttons button {
+      margin: 10px;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 10px;
+      background-color: #7569f6; 
+      color: #fff;
+      cursor: pointer;
+      font-size: 1em;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+      transition: background-color 0.3s ease, transform 0.2s ease;
+    }
+
+    .buttons button:hover {
+      background-color: #5a4ec9;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+      transform: translateY(-2px); 
+    }
+
+    
+    #content {
+      margin-top: 30px;
+      width: 100%;
+      transition: height 0.3s ease-in-out; 
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+  <div class="header">
+    <h1>Interactive Wireless Network Calculator</h1>
+  </div>
+
+  <div class="topics">
+    <p>Select The Aspect You Wish To Address From The Following Topics:</p>
+    <p>1. Wireless Communication System</p>
+    <p>2. OFDM Systems</p>
+    <p>3. Link Budget Calculation</p>
+    <p>4. Cellular System Design</p>
+  </div>
+
+  <div class="buttons">
+    <button id="btn1">Show Question 1</button>
+    <button id="btn2">Show Question 2</button>
+    <button id="btn3">Show Question 3</button>
+    <button id="btn4">Show Question 4</button>
+  </div>
+
+  <div id="content"></div>
+</div>
+
+
+<script src="script.js"></script>
+</body>
+</html>

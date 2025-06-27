@@ -1,0 +1,90 @@
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f2f2f2;
+  color: #333;
+}
+
+.container {
+  max-width: 800px;
+  margin: auto;
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+  text-align: center;
+  color: #7569f6; 
+}
+
+form {
+  margin-top: 20px;
+}
+
+.input-group {
+  margin-bottom: 10px;
+}
+
+.input-group label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.input-group input,
+.input-group select {
+  width: calc(100% - 22px);
+  padding: 8px 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+button {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  background-color: #7569f6; 
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #5a4ec9; 
+}
+
+#output {
+  margin-top: 20px;
+}
+
+
+.button-group {
+    display: flex;
+    gap: 10px; 
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.button-group button {
+    flex: 1; 
+    width: auto;
+}
+
+
+.hidden {
+    display: none;
+}
+
+#aiExplanationSection {
+    margin-top: 20px;
+}
+
+.explanation-box {
+    background-color: #f9f9f9;
+    padding: 15px;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    text-align: left;
+    white-space: pre-wrap; 
+}

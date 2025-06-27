@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cellular Network Calculation</title>
+    <link rel="stylesheet" href="styleprob5.css">
+</head>
+<body>
+ <div class="container">
+    <h1>Cellular Network Calculation</h1>
+    <p>
+        A new mobile network provider acquired the license to provide full-rate duplex voice communication using GSM900 technology in certain city 8 timeslots per carrier. The Area of the city is equal to ____ m². The mobile network provider is interested to provide service to __ thousand subscribers. Subscribers in this city make an average of ___ calls per day and the average call duration is __ minutes. The service provider is interested to provide the subscribers with a quality of service that guarantees a call drop probability equal to __. The minimum SIR needed to correctly provide the service is equal to __dB. Assuming __ dB power is measured at a reference distance of __ meters from base stations, the path loss exponent equals __ (cellularurban area), receiver sensitivity = __𝜇 watts, calculate the following
+    </p>
+    <ol>
+        <li> Maximum distance:</li>
+        <li> Maximum cell size:</li>
+        <li> Number of cells:</li>
+        <li> Traffic load (Erlangs):</li>
+        <li> Traffic load per cell (Erlangs):</li>
+        <li> Number of cells per cluster:</li>
+        <li> Minimum carriers (QoS Call drop probability):</li>
+        <li> Minimum carriers (QoS 0.05):</li>
+    </ol>
+    <form id="inputForm">
+        <div class="inputs">
+            <div class="input-group">
+                <label for="area">Area of the city:</label>
+                <input type="number" id="area">
+                <select id="areaUnit">
+                    <option value="m²">m²</option>
+                    <option value="km²">km²</option>
+                    <option value="hectares">hectares</option>
+                </select>
+            </div>
+            <div class="input-group">
+                <label for="subscribers">Number of subscribers:</label>
+                <input type="number" id="subscribers">
+            </div>
+            <div class="input-group">
+                <label for="callsPerDay">Average calls per day per subscriber:</label>
+                <input type="number" id="callsPerDay">
+            </div>
+            <div class="input-group">
+                <label for="callDuration">Average call duration:</label>
+                <input type="number" id="callDuration">
+                <select id="callDurationUnit">
+                    <option value="minutes">minutes</option>
+                    <option value="seconds">seconds</option>
+                    <option value="hours">hours</option>
+                </select>
+            </div>
+            <div class="input-group">
+                <label for="callDropProbability">Call drop probability:</label>
+                <input type="number" id="callDropProbability" step="0.01" min="0" max="1">
+            </div>
+            <div class="input-group">
+                <label for="minSIR">Minimum SIR needed (dB):</label>
+                <input type="number" id="minSIR">
+                <select id="minSIRUnit">
+                    <option value="dB">dB</option>
+                    <option value="watts">watts</option>
+                </select>
+            </div>
+            <div class="input-group">
+                <label for="powerAt10m">Power (db) at Reference distance meters:</label>
+                <input type="number" id="powerAt10m">
+                <select id="powerAt10mUnit">
+                    <option value="dB">dB</option>
+                    <option value="watts">watts</option>
+                </select>
+            </div>
+            <div class="input-group">
+                <label for="referenceDistance">Reference distance:</label>
+                <input type="number" id="referenceDistance">
+                <select id="referenceDistanceUnit">
+                    <option value="meters">meters</option>
+                    <option value="centimeters">centimeters</option>
+                </select>
+            </div>
+            <div class="input-group">
+                <label for="pathLossExponent">Path loss exponent:</label>
+                <input type="number" id="pathLossExponent">
+            </div>
+            <div class="input-group">
+                <label for="receiverSensitivity">Receiver sensitivity:</label>
+                <input type="number" id="receiverSensitivity">
+                <select id="receiverSensitivityUnit">
+                    <option value="µW">µW</option>
+                    <option value="nW">nW</option>
+                    <option value="mW">mW</option>
+                    <option value="W">W</option>
+                </select>
+            </div>
+            <div class="input-group">
+                <label for="numberofcochannelinterferingcells">number of co-channel interfering cells:</label>
+                <input type="number" id="numberofcochannelinterferingcells">
+            </div>
+            <div class="button-group">
+                <button type="button" onclick="calculate()">Calculate</button>
+                <button type="button" id="ask-ai-button">Explain with AI</button>
+            </div>
+        </div>
+    </form>
+    <div id="errorMessage" style="color: red;"></div>
+    <div>
+        <h2>Results:</h2>
+        <p>1.Maximum distance: <span id="output_a"></span></p>
+        <p>2.Maximum cell size: <span id="output_b"></span></p>
+        <p>3.Number of cells: <span id="output_c"></span></p>
+        <p>4.Traffic load (Erlangs): <span id="output_d"></span></p>
+        <p>5.Traffic load per cell (Erlangs): <span id="output_e"></span></p>
+        <p>6.Number of cells per cluster: <span id="output_f"></span></p>
+        <p>7.Minimum carriers (QoS <span id="output_g0"></span>): </p>
+        <p>   a) Number of channeles per cell: <span id="output_g1"></span></p>
+        <p>   b) Number of carriers per cell: <span id="output_g2"></span></p>
+        <p>   c) Number of carriers needed in the whole system: <span id="output_g3"></span></p>
+        <p>8.Minimum carriers (QoS 0.05):</p>
+        <p>   a) Number of channeles per cell: <span id="output_h1"></span></p>
+        <p>   b) Number of carriers per cell: <span id="output_h2"></span></p>
+        <p>   c) Number of carriers needed in the whole system: <span id="output_h3"></span></p>
+    </div>
+    <div id="aiExplanationSection" class="hidden">
+        <h2>AI Explanation</h2>
+        <div id="aiExplanation" class="explanation-box">
+            <p>Explanation will appear here...</p>
+        </div>
+    </div>
+</div>
+<script src="mainprob5.js"></script>
+</body> 
+</html>

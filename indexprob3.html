@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Transmit Power Calculator</title>
+    <link rel="stylesheet" href="styleprob3.css">
+</head>
+<body>
+    <h2>Link Budget Calculation</h2>
+    <p>Given a flat rural environment with a path loss of _ dB, a frequency of 900 MHz, __dB transmit antenna gain and __dB receive antenna gain, data rate of __kbps, __dB in antenna feed line loss, __dB in other losses, a fade margin of __dB, receiver amplifier gain of __dB, noise figure total of __dB, a noise temperature of __K, and link margin of _ dB. Find the total transmit power required of an (8- PSK or 16PSK or BPSK/QPSK modulated signal with a maximum bit error rate of _.</p>
+    <img src="Q3PROB4.png" alt="Image Description" style="float: right; margin-left: 10px;">
+    <form id="powerCalcForm">
+        <label for="bitErrorRate">Maximum Bit Error Rate:</label>
+        <select id="bitErrorRate" onchange="updateModulationOptions()">
+            <option value="1e-1">10^-1</option>
+            <option value="1e-2">10^-2</option>
+            <option value="1e-3">10^-3</option>
+            <option value="1e-4">10^-4</option>
+            <option value="1e-5">1e-5</option>
+            <option value="1e-6">10^-6</option>
+            <option value="1e-7">10^-7</option>
+            <option value="1e-8">10^-8</option>
+        </select>
+        <br>
+        <label for="modulationType">Modulation Type:</label>
+        <select id="modulationType">
+            <option value="8psk">8-PSK</option>
+            <option value="16psk">16-PSK</option>
+            <option value="bpsk/qpsk">BPSK/QPSK</option>
+        </select>
+        <br>
+        <div class="inputs">
+            <label for="pathLoss">Path Loss (dB):</label>
+            <input type="number" id="pathLoss" required step="any">
+            <br>
+            <label for="transmitAntennaGain">Transmit Antenna Gain (dB):</label>
+            <input type="number" id="transmitAntennaGain" required step="any">
+            <br>
+            <label for="receiveAntennaGain">Receive Antenna Gain (dB):</label>
+            <input type="number" id="receiveAntennaGain" required step="any">
+            <br>
+            <label for="dataRate">Data Rate :</label>
+            <input type="number" id="dataRate" required step="any">
+            <select id="dataRateUnit">
+                <option value="kbps">kbps</option>
+                <option value="Mbps">Mbps</option>
+                <option value="Gbps">Gbps</option>
+                <option value="bps">bps</option>
+            </select>
+            <br>
+            <label for="antennaFeedLineLoss">Antenna Feed Line Loss (dB):</label>
+            <input type="number" id="antennaFeedLineLoss" required step="any">
+            <br>
+            <label for="otherLosses">Other Losses (dB):</label>
+            <input type="number" id="otherLosses" required step="any">
+            <br>
+            <label for="fadeMargin">Fade Margin (dB):</label>
+            <input type="number" id="fadeMargin" required step="any">
+            <br>
+            <label for="receiverAmplifierGain">Receiver Amplifier Gain (dB):</label>
+            <input type="number" id="receiverAmplifierGain" required step="any">
+            <br>
+            <label for="noiseFigure">Noise Figure (dB):</label>
+            <input type="number" id="noiseFigure" required step="any">
+            <br>
+            <label for="noiseTemperature">Noise Temperature :</label>
+            <input type="number" id="noiseTemperature" required step="any">
+            <select id="noiseTemperatureUnit">
+                <option value="K">K</option>
+                <option value="mK">mK</option>
+                <option value="µK">µK</option>
+            </select>
+            <br>
+            <label for="linkMargin">Link Margin (dB):</label>
+            <input type="number" id="linkMargin" required step="any">
+            <br>
+            <div class="button-group">
+                <button type="button" id="calculate-button">Calculate Transmit Power</button>
+                <button type="button" id="ask-ai-button">Explain with AI</button>
+            </div>
+        </div>
+    </form>
+    <p id="result"></p>
+    <div id="solutionContainer" style="display:none;">
+        <p>Solution:</p>
+        <p id="solution"></p>
+    </div>
+
+    <div id="aiExplanationSection" class="hidden">
+        <h2>AI Explanation</h2>
+        <div id="aiExplanation" class="explanation-box">
+            <p>Explanation will appear here...</p>
+        </div>
+    </div>
+    
+    <script src="scriptprob3.js"></script>
+</body>
+</html>

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wireless Communication System Calculator</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Wireless Communication System</h1>
+        <p>An analog signal with a bandwidth of <span id="bwText">__</span> KHz undergoes sampling at the Nyquist rate, followed by processing through an <span id="quantizerBitsText">__</span>-bit quantizer, a source encoder with a compression rate of <span id="sourceEncoderRateText">__</span>, a channel encoder with a rate of <span id="channelEncoderRateText">__</span>, and a <span id="interleaverBitsText">__</span>-bit interleaver.</p>
+
+        <div class="inputs">
+            <div class="input-group">
+                <label for="bw">Bandwidth (B):</label>
+                <input type="number" id="bw" min="0" step="1">
+                <select id="bwUnit">
+                    <option value="KHz">KHz</option>
+                    <option value="Hz">Hz</option>
+                </select>
+            </div>
+            <div class="input-group">
+                <label for="quantizerBits">Number of quantizer bits (N):</label>
+                <input type="number" id="quantizerBits" min="1" step="1">
+            </div>
+            <div class="input-group">
+                <label for="sourceEncoderRate">Source encoder rate (Rs):</label>
+                <input type="number" id="sourceEncoderRate" step="0.01" min="0.01" max="1" required>
+                <span id="rs-warning" class="warning">Rs must be less than 1.</span>
+            </div>
+            <div class="input-group">
+                <label for="channelEncoderRate">Channel encoder rate (Rc):</label>
+                <input type="number" id="channelEncoderRate" step="0.01" min="0.01">
+            </div>
+            <div class="input-group">
+                <label for="interleaverBits">Interleaver bits:</label>
+                <input type="number" id="interleaverBits" min="0" step="1">
+            </div>
+            <div class="input-group">
+                <label for="burstBits">Burst bits:</label>
+                <input type="number" id="burstBits" min="1" step="1">
+            </div>
+            <div class="input-group">
+                <label for="burstDuration">Burst duration (ms):</label>
+                <input type="number" id="burstDuration" min="0.001" step="0.001">
+            </div>
+        </div>
+        
+        <div class="button-group">
+            <button onclick="calculate()">Calculate</button>
+            <button onclick="askAI()">Explain with AI</button>
+        </div>
+
+        <div id="resultsSection" class="hidden">
+            <hr>
+            <h2>Results</h2>
+            <ol>
+                <li>
+                    <div class="result-item">
+                        <span>Calculate the sampling frequency (fs):</span>
+                        <span id="output1" class="result-value">__ Hz</span>
+                    </div>
+                </li>
+                <li>
+                    <div class="result-item">
+                        <span>Find the number of quantization levels (L):</span>
+                        <span id="output2" class="result-value">__ levels</span>
+                    </div>
+                </li>
+                <li>
+                    <div class="result-item">
+                        <span>Determine the bit rate at the output of the source encoder (Rb_s):</span>
+                        <span id="output3" class="result-value">__ bps</span>
+                    </div>
+                </li>
+                <li>
+                    <div class="result-item">
+                        <span>Calculate the bit rate at the output of the channel encoder (Rb_c):</span>
+                        <span id="output4" class="result-value">__ bps</span>
+                    </div>
+                </li>
+                <li>
+                    <div class="result-item">
+                        <span>Calculate the bit rate at the output of the interleaver (Rb_i):</span>
+                        <span id="output5" class="result-value">__ bps</span>
+                    </div>
+                </li>
+                <li>
+                    <div class="result-item">
+                        <span>Calculate the bit rate after burst formatting (Rb_b):</span>
+                        <span id="output6" class="result-value">__ bps</span>
+                    </div>
+                </li>
+            </ol>
+        </div>
+        
+        <div id="aiExplanationSection" class="hidden">
+            <hr>
+            <h2>AI Explanation</h2>
+            <div id="aiExplanation" class="explanation-box">
+                <p>Explanation will appear here...</p>
+            </div>
+        </div>
+
+    </div>
+    <script src="main.js"></script>
+</body>
+</html>
